@@ -1,0 +1,309 @@
+<title>Shreyas Pawar Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Shreyas Pawar, NLP engineer working on Hindi text normalization for speech synthesis in NVIDIA NeMo-text-processing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: single reading column; hero pairs a short thesis with a live written-form to spoken-form card. */
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --fg: #141b2d;
+  --muted: #5a6478;
+  --line: #dde2ea;
+  --accent: #2748c9;
+  --accent-soft: #e6ebfb;
+  --ok: #1d7a4b;
+  --ok-soft: #e1f3e9;
+  --warn: #8a5a00;
+  --warn-soft: #fbefd5;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-deva: "Noto Sans Devanagari", "Inter", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1320; --surface: #151c2e; --fg: #e8ecf5; --muted: #98a2b8; --line: #263049;
+    --accent: #8ea6ff; --accent-soft: #1d2748; --ok: #6fd6a0; --ok-soft: #14301f;
+    --warn: #f0c36a; --warn-soft: #3a2d10; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1320; --surface: #151c2e; --fg: #e8ecf5; --muted: #98a2b8; --line: #263049;
+  --accent: #8ea6ff; --accent-soft: #1d2748; --ok: #6fd6a0; --ok-soft: #14301f;
+  --warn: #f0c36a; --warn-soft: #3a2d10; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font: 400 16px/1.65 var(--font-body);
+  padding-block: 0 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 980px; margin: 0 auto; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.15; margin: 0; }
+.label { font: 500 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+nav { display: flex; gap: 20px; flex-wrap: wrap; padding-block: 20px; font-size: 14px; border-bottom: 1px solid var(--line); }
+nav a { color: var(--muted); text-decoration: none; }
+nav a:hover { color: var(--accent); }
+nav .name { color: var(--fg); font: 600 15px var(--font-display); margin-right: auto; }
+
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; padding-block: 56px 48px; align-items: center; }
+.hero h1 { font-size: clamp(2.4rem, 6vw, 3.8rem); font-weight: 700; letter-spacing: -.02em; }
+.hero .role { margin: 14px 0 0; font-size: 1.15rem; color: var(--muted); }
+.hero .thesis { margin: 20px 0 0; max-width: 52ch; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: 500 14px var(--font-body); text-decoration: none; cursor: pointer; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.btn.primary:hover { color: var(--bg); opacity: .9; }
+
+.demo { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; min-width: 0; }
+.demo .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 18px; }
+.tab { font: 500 13px var(--font-body); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+.io { display: grid; gap: 6px; }
+.io .in { font: 500 1.35rem/1.3 var(--font-mono); overflow-wrap: anywhere; }
+.io .arrow { color: var(--accent); font: 500 13px var(--font-mono); }
+.io .out { font: 600 1.35rem/1.5 var(--font-deva); overflow-wrap: anywhere; }
+.demo .note { margin: 16px 0 0; font-size: 13px; color: var(--muted); }
+
+section { padding-block: 44px; border-top: 1px solid var(--line); }
+section > .head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 22px; }
+section h2 { font-size: 1.7rem; }
+.lead { max-width: 68ch; margin: 0 0 22px; color: var(--muted); }
+
+.tablebox { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; min-width: 640px; font-size: 15px; }
+th { text-align: left; font: 500 12px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 12px 16px; border-bottom: 1px solid var(--line); }
+td { padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.pr { font-family: var(--font-mono); white-space: nowrap; }
+td.area { font-weight: 600; white-space: nowrap; }
+.pill { display: inline-block; font: 500 12px var(--font-body); padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.pill.merged { background: var(--ok-soft); color: var(--ok); }
+.pill.review { background: var(--warn-soft); color: var(--warn); }
+.fine { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.cols > * { min-width: 0; }
+.job { margin-bottom: 8px; }
+.job h3 { font-size: 1.25rem; }
+.job .meta { color: var(--muted); font-size: 14px; margin: 4px 0 14px; }
+ul.tight { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; }
+.skills { display: grid; gap: 18px; }
+.skills h3 { font-size: 1rem; margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 400 13px var(--font-mono); padding: 5px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.edu { display: grid; grid-template-columns: 1fr auto; gap: 4px 20px; align-items: baseline; }
+.edu .big { font: 600 1.15rem var(--font-display); }
+
+.contact { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+.mail { font: 500 1.05rem var(--font-mono); user-select: all; overflow-wrap: anywhere; }
+footer { padding-top: 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 28px; padding-block: 36px 32px; }
+  .cols { grid-template-columns: 1fr; }
+  nav .name { flex-basis: 100%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .io .out { animation: rise .35s ease both; }
+  @keyframes rise { from { opacity: .0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+}
+</style>
+
+<div class="wrap">
+  <nav>
+    <span class="name">Shreyas Pawar</span>
+    <a href="#open-source">Open source</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#research">Research</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="label" style="margin:0 0 14px">NLP · Speech text processing</p>
+      <h1>Shreyas Pawar</h1>
+      <p class="role">Prompt Engineer and open-source contributor to NVIDIA NeMo-text-processing</p>
+      <p class="thesis">I build the layer that turns written Hindi into text a speech system can read aloud: numbers, dates, money, units, Roman numerals and code-mixed English. I am applying for a Master's programme in NLP to take this work towards research on multilingual language processing.</p>
+      <div class="links">
+        <a class="btn primary" href="#open-source">See my pull requests</a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+        <a class="btn" href="https://github.com/ShReYaSPaWaR22" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/shreyas-pawar-a6651a238/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="demo" aria-live="polite">
+      <div class="label">Written form to spoken form</div>
+      <div class="tabs" role="tablist" aria-label="Examples">
+        <button class="tab" role="tab" aria-selected="true" data-i="0">Money</button>
+        <button class="tab" role="tab" aria-selected="false" data-i="1">Date</button>
+        <button class="tab" role="tab" aria-selected="false" data-i="2">Time</button>
+        <button class="tab" role="tab" aria-selected="false" data-i="3">Percent</button>
+        <button class="tab" role="tab" aria-selected="false" data-i="4">Roman</button>
+      </div>
+      <div class="io">
+        <div class="in" id="in">₹3,24,50,000</div>
+        <div class="arrow">↓ normalize</div>
+        <div class="out" id="out">तीन करोड़ चौबीस लाख पचास हज़ार रुपए</div>
+      </div>
+      <p class="note">Illustrative examples of the cases the grammars handle. Indian lakh and crore grouping is read as one number.</p>
+    </div>
+  </header>
+
+  <section id="open-source">
+    <div class="head">
+      <h2>Open-source contributions</h2>
+      <a href="https://github.com/NVIDIA/NeMo-text-processing/pulls?q=is%3Apr+author%3Ashrpawar-alt" target="_blank" rel="noopener">All pull requests by shrpawar-alt</a>
+    </div>
+    <p class="lead">NeMo-text-processing is NVIDIA's library of weighted finite-state grammars for text normalization. I write Hindi grammars in pynini using a tagger and verbalizer design, driven by TSV data files, and I answer review from the NeMo maintainers. Hindi TN v3 is merged and v4 is in progress.</p>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>PR</th><th>Area</th><th>Contribution</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/418" target="_blank" rel="noopener">#418</a></td><td class="area">Date</td><td>Rule-based zero padding, removed redundant TSV entries and ambiguous formats. Date class accuracy rose from about 87% to about 99%.</td><td><span class="pill merged">Merged · v3</span></td></tr>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/424" target="_blank" rel="noopener">#424</a></td><td class="area">Money</td><td>Fixed long decimals read as minor currency, and added singular and plural currency forms.</td><td><span class="pill merged">Merged · v3</span></td></tr>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/425" target="_blank" rel="noopener">#425</a></td><td class="area">Electronic</td><td>Partial TSV matching, a chemical names list, and relative Unix paths.</td><td><span class="pill merged">Merged · v3</span></td></tr>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/429" target="_blank" rel="noopener">#429</a></td><td class="area">Measure</td><td>Removed single capital letter units that caused false positives.</td><td><span class="pill merged">Merged · v3</span></td></tr>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/440" target="_blank" rel="noopener">#440</a></td><td class="area">Serial</td><td>New Serial tagger for mixed letter and digit identifiers.</td><td><span class="pill merged">Merged · v3</span></td></tr>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/442" target="_blank" rel="noopener">#442</a></td><td class="area">Roman</td><td>New Roman numeral class anchored on Devanagari context to avoid false positives.</td><td><span class="pill merged">Merged · v3</span></td></tr>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/458" target="_blank" rel="noopener">#458</a></td><td class="area">Electronic</td><td>Trimmed uncommon entries from the electronic TSV data.</td><td><span class="pill merged">Merged · v3</span></td></tr>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/461" target="_blank" rel="noopener">#461</a></td><td class="area">Address, Cardinal</td><td>Optimised Address, Electronic, Serial and Cardinal grammars, including 1,00,000 style comma grouping.</td><td><span class="pill merged">Merged · v3</span></td></tr>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/463" target="_blank" rel="noopener">#463</a></td><td class="area">Roman</td><td>Numerals up to 3999 using a compositional approach.</td><td><span class="pill review">Under review · v4</span></td></tr>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/483" target="_blank" rel="noopener">#483</a></td><td class="area">Percent, Time</td><td>Percent in the measure class, and leading zeros in times such as 09:15.</td><td><span class="pill review">Under review · v4</span></td></tr>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/486" target="_blank" rel="noopener">#486</a></td><td class="area">Math</td><td>Support for mathematical expressions, with the date class no longer consuming them.</td><td><span class="pill review">Under review · v4</span></td></tr>
+          <tr><td class="pr"><a href="https://github.com/NVIDIA/NeMo-text-processing/pull/505" target="_blank" rel="noopener">#505</a></td><td class="area">Negative numbers</td><td>Fixed negative verbalization fallback and standardized the MINUS constant.</td><td><span class="pill review">Under review · v4</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fine">These pull requests were made from my GitHub account shrpawar-alt.</p>
+  </section>
+
+  <section id="experience">
+    <div class="head"><h2>Experience</h2></div>
+    <div class="job">
+      <h3>Prompt Engineer, Zensar Technologies</h3>
+      <p class="meta">Oct 2024 to present · Remote</p>
+    </div>
+    <div class="cols">
+      <div>
+        <div class="label" style="margin-bottom:10px">Text normalization</div>
+        <ul class="tight">
+          <li>Own Hindi text-normalization grammars for speech synthesis in NeMo-text-processing.</li>
+          <li>Debug grammar conflicts between classes, build regression and blind test sets, and check Sparrowhawk deployment behaviour.</li>
+          <li>Prefer TSV-backed data and compositional graphs over hardcoded rules.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:10px">LLM data and evaluation</div>
+        <ul class="tight">
+          <li>Pairwise preference judgements for RLHF on correctness, helpfulness and instruction following.</li>
+          <li>Prompt and response authoring for supervised fine-tuning of code LLMs in Python and C++.</li>
+          <li>Visual question answering on technical diagrams with multi-step reasoning.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="head"><h2>Projects and training</h2><a href="https://github.com/ShReYaSPaWaR22" target="_blank" rel="noopener">More on GitHub</a></div>
+    <div class="cols">
+      <div>
+        <div class="label" style="margin-bottom:10px">Projects</div>
+        <ul class="tight">
+          <li><a href="https://github.com/ShReYaSPaWaR22/AI-Chatbot-on-Discord-Platform" target="_blank" rel="noopener"><strong>AI Chatbot on Discord</strong></a>. A conversational bot for Discord servers built on the Google Generative AI API.</li>
+          <li><a href="https://github.com/ShReYaSPaWaR22/Student-Record-Management-System" target="_blank" rel="noopener"><strong>Student Record Management System</strong></a>. A C++ desktop application that stores student records in an Excel file.</li>
+          <li><a href="https://github.com/ShReYaSPaWaR22/Bank-Management-System/tree/main" target="_blank" rel="noopener"><strong>Bank Management System</strong></a>. A C++ application that keeps banking records in a binary file.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:10px">Earlier training</div>
+        <ul class="tight">
+          <li><strong>Web Development Intern</strong>, Oasis Infobyte, Mar to Apr 2023. Built a calculator, a tribute page and a to-do app.</li>
+          <li><strong>C++ Programming certification</strong>, Skylark Computers, Sep 2021 to Jan 2022. Syntax, object-oriented programming and standard libraries.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="head"><h2>Research interests</h2></div>
+    <p class="lead" style="margin-bottom:0">Multilingual and low-resource NLP, with a focus on text front-ends for speech systems. Code-mixed Hindi and English, and the cases where a rule-based normalizer and a neural model should divide the work. I am also interested in LLM alignment and evaluation, drawing on my preference-labelling experience.</p>
+  </section>
+
+  <section id="skills">
+    <div class="head"><h2>Skills</h2></div>
+    <div class="skills">
+      <div><h3>NLP and speech text</h3><div class="chips"><span class="chip">Text normalization</span><span class="chip">pynini / OpenFST</span><span class="chip">WFST grammars</span><span class="chip">Sparrowhawk</span><span class="chip">Hindi</span><span class="chip">Code-mixed text</span></div></div>
+      <div><h3>LLM work</h3><div class="chips"><span class="chip">Prompt engineering</span><span class="chip">RLHF data</span><span class="chip">SFT data</span><span class="chip">Evaluation</span><span class="chip">Multimodal QA</span></div></div>
+      <div><h3>Languages and tools</h3><div class="chips"><span class="chip">Python</span><span class="chip">C++</span><span class="chip">Git and GitHub</span><span class="chip">Linux / WSL</span><span class="chip">LaTeX</span></div></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="head"><h2>Education</h2></div>
+    <div class="edu">
+      <div class="big">B.E. Computer Engineering</div><div class="label">2024</div>
+      <div>PVG's College of Engineering &amp; SSDIOM, Nashik · Savitribai Phule Pune University</div><div style="font:500 14px var(--font-mono)">CGPA 8.92 / 10</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="head"><h2>Contact</h2></div>
+    <div class="contact">
+      <span class="mail" id="mail">shreyaspawar78@gmail.com</span>
+      <button class="btn" id="copy" type="button">Copy email</button>
+      <a href="https://www.linkedin.com/in/shreyas-pawar-a6651a238/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/ShReYaSPaWaR22" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/shrpawar-alt" target="_blank" rel="noopener">GitHub (NeMo contributions)</a>
+    </div>
+  </section>
+
+  <footer>Shreyas Pawar · Nashik, India</footer>
+</div>
+
+<script>
+(function () {
+  var ex = [
+    ["₹3,24,50,000", "तीन करोड़ चौबीस लाख पचास हज़ार रुपए", "Indian lakh and crore grouping is read as one number."],
+    ["15/08/1947", "पंद्रह अगस्त उन्नीस सौ सैंतालीस", "Day, month and year are read in spoken order."],
+    ["09:15", "नौ बजकर पंद्रह मिनट", "Zero-padded clock times are accepted."],
+    ["50%", "पचास प्रतिशत", "The percent sign is read as a unit of the measure class."],
+    ["XIIवीं", "बारहवीं", "A Devanagari suffix marks the Roman numeral as an ordinal."]
+  ];
+  var tabs = document.querySelectorAll(".tab");
+  var i = document.getElementById("in"), o = document.getElementById("out"), n = document.querySelector(".demo .note");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      var e = ex[+t.dataset.i];
+      i.textContent = e[0]; o.textContent = e[1]; n.textContent = "Illustrative example. " + e[2];
+      o.style.animation = "none"; void o.offsetWidth; o.style.animation = "";
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+    });
+  });
+  var b = document.getElementById("copy");
+  b.addEventListener("click", function () {
+    var done = function () { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy email"; }, 1600); };
+    try {
+      navigator.clipboard.writeText("shreyaspawar78@gmail.com").then(done, function () { sel(); });
+    } catch (e) { sel(); }
+    function sel() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById("mail"));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      b.textContent = "Press Ctrl+C";
+    }
+  });
+})();
+</script>
